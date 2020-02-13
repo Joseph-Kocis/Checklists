@@ -13,9 +13,6 @@ struct DetailView: View {
     
     var item: Item
     
-    //@State var itemTitle: String = ""
-    //@State var itemDescription: String = ""
-    
     var itemTitle: Binding<String> {
         Binding<String> (
             get: { self.item.title ?? "" },
@@ -50,8 +47,6 @@ struct DetailView: View {
     
     init(item: Item) {
         self.item = item
-        //self.itemTitle = item.title ?? ""
-        //self.itemDescription = item.itemDescription ?? ""
         self.itemDueDate = item.dueDate ?? Date()
     }
     
