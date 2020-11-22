@@ -20,9 +20,16 @@ struct DateFieldView: View {
     var date: Binding<Date>
     
     var body: some View {
-        VStack {
-            Form {
-                DatePicker(label, selection: date)
+        VStack(alignment: .leading) {
+            Text(label)
+                .font(.headline)
+            
+            Section {
+                Form {
+                    DatePicker(selection: date, in: Date()...) {
+                        Text(label)
+                    }
+                }
             }
         }
     }

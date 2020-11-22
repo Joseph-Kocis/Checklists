@@ -15,6 +15,9 @@ struct AddItemView: View {
     @State var itemTitle = ""
     @State var itemDescription = ""
     
+    let horizontalPadding: CGFloat = 10
+    let topPadding: CGFloat = 15
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -23,11 +26,17 @@ struct AddItemView: View {
                     label: "Title",
                     placeHolder: "New Item Title"
                 )
+                .padding(.horizontal, horizontalPadding)
+                .padding(.top, topPadding)
+                
                 LabelTextFieldView(
                     textField: $itemDescription,
                     label: "Description",
                     placeHolder: "New Item Description"
                 )
+                .padding(.horizontal, horizontalPadding)
+                .padding(.top, topPadding)
+                
                 Spacer()
             }
             .navigationBarTitle("Create a New Item",

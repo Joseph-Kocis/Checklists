@@ -26,7 +26,7 @@ struct ContentView: View {
             List {
                 ForEach(items, id: \.self) { item in
                     NavigationLink(
-                        destination: DetailView(item: item)
+                        destination: DetailView2(item: item)
                             .navigationBarTitle("Reminder",
                                 displayMode: .inline)
                     ) {
@@ -39,13 +39,12 @@ struct ContentView: View {
                 .onDelete(perform: delete)
             }
             .navigationBarTitle("Checklists",
-                                displayMode: .inline)
+                displayMode: .inline)
             .navigationBarItems(
                 leading: EditButton(),
                 trailing:
                     Button(action: {
-                        self.showingAddItemView
-                            .toggle()
+                        self.showingAddItemView.toggle()
                     }, label: {
                         Image(systemName: "plus")
                             .imageScale(.medium)

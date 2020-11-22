@@ -1,14 +1,14 @@
 //
-//  DetailView.swift
+//  DetailView2.swift
 //  Checklists
 //
-//  Created by Jody Kocis on 11/28/19.
-//  Copyright © 2019 Joseph Kocis. All rights reserved.
+//  Created by Jody Kocis on 2/20/20.
+//  Copyright © 2020 Joseph Kocis. All rights reserved.
 //
 
 import SwiftUI
 
-struct DetailView: View {
+struct DetailView2: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var item: Item
@@ -56,8 +56,8 @@ struct DetailView: View {
     // TODO: -- https://dev.to/kevinmaarek/forms-made-easy-with-swiftui-3b75
     
     var body : some View {
-        VStack {
-            LabelTextFieldView(
+        //VStack {
+            /*LabelTextFieldView(
                 textField: itemTitle,
                 label: "Title",
                 placeHolder: "No Item Title"
@@ -80,8 +80,27 @@ struct DetailView: View {
             .padding(.horizontal, horizontalPadding)
             .padding(.top, topPadding)
             
-            Spacer()
+            Spacer()*/
+        //}
+        
+        VStack {
+            Form {
+                Section(header: Text("Title")) {
+                    TextField(
+                        "No Item Title",
+                        text: itemTitle
+                    )
+                }
+                
+                Section(header: Text("Description")) {
+                    TextField(
+                        "No Item Description",
+                        text: itemDescription
+                    )
+                }
+            }
         }
+        
     }
     
     func save() {
@@ -93,7 +112,7 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
+struct DetailView2_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let item = Item(context: context)
@@ -103,6 +122,6 @@ struct DetailView_Previews: PreviewProvider {
         item.remindDate = Date()
         item.dueDate = Date()
         
-        return DetailView(item: item)
+        return DetailView2(item: item)
     }
 }
